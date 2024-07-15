@@ -1,6 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://dsrkhobn8f76b"]
+[gd_scene load_steps=6 format=3 uid="uid://dsrkhobn8f76b"]
 
 [ext_resource type="PackedScene" uid="uid://1cmv8os5w0tn" path="res://block.tscn" id="1_o2t4f"]
+[ext_resource type="PackedScene" uid="uid://bubo7ej14vpji" path="res://steve.tscn" id="2_35cyl"]
+[ext_resource type="Script" path="res://steve.gd" id="3_3ji2n"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_8jqjq"]
 size = Vector3(10, 0.5, 10)
@@ -11,7 +13,8 @@ size = Vector3(10, 0.5, 10)
 [node name="Level1" type="Node3D"]
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.960274, 0.279058, 0, -0.279058, 0.960274, -0.964355, 5.91381, 18.1792)
+transform = Transform3D(0.999846, 0.00489946, -0.0168596, 0, 0.960274, 0.279058, 0.0175571, -0.279015, 0.960126, 0.446042, 5.94816, 12.8985)
+fov = 59.4451
 
 [node name="Floor" type="StaticBody3D" parent="."]
 metadata/_edit_group_ = true
@@ -27,14 +30,20 @@ shape = SubResource("BoxShape3D_iuq1j")
 transform = Transform3D(1, 0, 0, 0, 0.575591, 0.817738, 0, -0.817738, 0.575591, -0.00469398, 8.39679, 3.19684)
 shadow_enabled = true
 
-[node name="Block1" parent="." instance=ExtResource("1_o2t4f")]
+[node name="Blocks" type="Node3D" parent="."]
+
+[node name="Block1" parent="Blocks" instance=ExtResource("1_o2t4f")]
 transform = Transform3D(0.589309, -0.660754, -0.464886, 0, 0.575419, -0.817859, 0.807908, 0.481972, 0.3391, 0, 2.82099, 0)
 
-[node name="Block2" parent="." instance=ExtResource("1_o2t4f")]
+[node name="Block2" parent="Blocks" instance=ExtResource("1_o2t4f")]
 transform = Transform3D(0.589309, -0.660754, -0.464886, -0.502592, 0.150691, -0.851289, 0.632547, 0.73532, -0.243286, 0, 4.17338, -0.0641875)
 
-[node name="Block3" parent="." instance=ExtResource("1_o2t4f")]
+[node name="Block3" parent="Blocks" instance=ExtResource("1_o2t4f")]
 transform = Transform3D(-0.0282994, -0.993661, 0.1088, -0.660754, -0.0630773, -0.747947, 0.750069, -0.0930561, -0.654781, -0.150412, 7.43291, -0.0424476)
 
-[node name="Block4" parent="." instance=ExtResource("1_o2t4f")]
+[node name="Block4" parent="Blocks" instance=ExtResource("1_o2t4f")]
 transform = Transform3D(-0.0387823, -0.992263, 0.117943, -0.660754, -0.0630773, -0.747948, 0.7496, -0.106938, -0.653196, -0.0769153, 6.03309, -0.12816)
+
+[node name="Steve" parent="." instance=ExtResource("2_35cyl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.41032, 1.16079, -0.0964003)
+script = ExtResource("3_3ji2n")
